@@ -67,7 +67,6 @@ contract Base is ERC721, ERC2981, IBase, TldAccessable {
             isApprovedForAll(owner, spender));
     }
 
-    // TODO: erc721 name and ticker
     constructor(
         ISANN _sann,
         SidRegistry _sidRegistry,
@@ -153,8 +152,6 @@ contract Base is ERC721, ERC2981, IBase, TldAccessable {
         return super.ownerOf(tokenId);
     }
 
-    // TODO: add function to lookup the previous owner of a name.
-
     // Set the resolver for the TLD this registrar manages.
     function setResolver(address resolver) external override onlyPlatformAdmin {
         sidRegistry.setResolver(baseNode, resolver);
@@ -236,9 +233,6 @@ contract Base is ERC721, ERC2981, IBase, TldAccessable {
         emit NameRenewed(id, expiries[id]);
         return expiries[id];
     }
-
-    // TODO: add functoin to burn a NFT that has completely expired.
-    // expiries[id] + GRACE_PERIOD < block.timestamp
 
     /**
      * @dev Reclaim ownership of a name, if you own it in the registrar.

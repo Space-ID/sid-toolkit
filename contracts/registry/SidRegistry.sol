@@ -24,7 +24,7 @@ contract SidRegistry is ISidRegistry {
     }
 
     /**
-     * @dev Constructs a new arbid registry.
+     * @dev Constructs a new registry.
      */
     constructor() {
         records[0x0].owner = tx.origin;
@@ -124,7 +124,7 @@ contract SidRegistry is ISidRegistry {
 
     /**
      * @dev Enable or disable approval for a third party ("operator") to manage
-     *  all of `msg.sender`'s arbid records. Emits the ApprovalForAll event.
+     *  all of `msg.sender`'s records. Emits the ApprovalForAll event.
      * @param _operator Address to add to the set of authorized operators        .
      * @param _approved True if the operator is approved, false to revoke approval.
      */
