@@ -75,6 +75,11 @@ contract TldFactory is ITldFactory, TldAccessable, Initializable {
         emit SetDefaultPriceOracle(defaultPriceOracle);
     }
 
+    /// Create a new TLD @param tld for @param tldOwner.
+    /// premise:
+    /// 1. tld is not registered yet, otherwise it will revert by SANN.
+    /// 2. tldOwner is not 0x0, otherwise it will revert by SANN.
+    /// 3. tldOwner has authorized msg.sender to create a TLD for him/her.
     function createDomainService(
         string calldata tld,
         address tldOwner,
