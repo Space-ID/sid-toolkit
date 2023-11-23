@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/common/ERC2981.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./IBase.sol";
-import "../registry/SidRegistry.sol";
+import "../registry/ISidRegistry.sol";
 import "../admin/ISANN.sol";
 import "../access/TldAccessable.sol";
 
@@ -16,7 +16,7 @@ contract Base is ERC721, ERC2981, IBase, TldAccessable {
     // A map of expiry times
     mapping(uint256 => uint) expiries;
     // The sid registry
-    SidRegistry public sidRegistry;
+    ISidRegistry public sidRegistry;
     // The namehash of the TLD this registrar owns nodehash(tld.identifier)
     bytes32 public baseNode;
     //uniquely identifies this a TLD on a specific chain
@@ -69,7 +69,7 @@ contract Base is ERC721, ERC2981, IBase, TldAccessable {
 
     constructor(
         ISANN _sann,
-        SidRegistry _sidRegistry,
+        ISidRegistry _sidRegistry,
         uint256 _identifier,
         string memory _tld,
         string memory _baseUri

@@ -9,7 +9,7 @@ import "./profiles/NameResolver.sol";
 import "./profiles/PubkeyResolver.sol";
 import "./profiles/TextResolver.sol";
 import "./Multicallable.sol";
-import "../registry/SidRegistry.sol";
+import "../registry/ISidRegistry.sol";
 import "./profiles/TldNameResolver.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
@@ -30,7 +30,7 @@ TldNameResolver,
 Ownable,
 Initializable
 {
-    SidRegistry public sidRegistry;
+    ISidRegistry public sidRegistry;
     mapping(address => bool) trustedControllers;
 
     /**
@@ -53,7 +53,7 @@ Initializable
     }
 
     function initialize (
-        SidRegistry _sidRegistry,
+        ISidRegistry _sidRegistry,
         address _trustedController,
         uint _defaultCoinType
     ) public initializer onlyOwner {
